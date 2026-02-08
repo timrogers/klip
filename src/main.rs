@@ -2,6 +2,7 @@ mod clipboard;
 mod error;
 
 use clipboard::ClipboardManager;
+use clap::Parser;
 use rmcp::handler::server::tool::ToolRouter;
 use rmcp::handler::server::wrapper::Parameters;
 use rmcp::model::*;
@@ -14,6 +15,12 @@ use rmcp::ServiceExt;
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 use tracing_subscriber::EnvFilter;
+
+/// Cross-platform MCP server for clipboard operations
+#[derive(Parser, Debug)]
+#[command(name = "klip")]
+#[command(author, version, about, long_about = None)]
+struct Cli {}
 
 /// Input parameters for the copy_to_clipboard tool
 #[derive(Debug, Clone, Serialize, Deserialize, JsonSchema)]
@@ -73,6 +80,9 @@ impl ServerHandler for KlipServer {
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    // Parse CLI arguments (this handles --help and --version automatically)
+    let _cli = Cli::parse();
+
     // Initialize tracing/logging
     tracing_subscriber::fmt()
         .with_env_filter(
