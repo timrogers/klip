@@ -92,8 +92,6 @@ Successfully copied 13 characters to clipboard
 
 ## Development
 
-See [GETTING_STARTED.md](GETTING_STARTED.md) for development setup instructions and [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) for the technical architecture.
-
 ### Building
 
 ```bash
@@ -110,6 +108,16 @@ cargo test
 
 ```bash
 cargo run
+```
+
+### CLI Options
+
+```bash
+# Show help
+klip --help
+
+# Show version
+klip --version
 ```
 
 ## Platform Support
