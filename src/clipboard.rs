@@ -9,8 +9,8 @@ pub struct ClipboardManager {
 impl ClipboardManager {
     /// Creates a new clipboard manager
     pub fn new() -> Result<Self, ClipboardError> {
-        let clipboard = Clipboard::new()
-            .map_err(|e| ClipboardError::InitializationFailed(e.to_string()))?;
+        let clipboard =
+            Clipboard::new().map_err(|e| ClipboardError::InitializationFailed(e.to_string()))?;
 
         Ok(Self { clipboard })
     }
@@ -23,6 +23,7 @@ impl ClipboardManager {
     }
 
     /// Gets current clipboard content
+    #[allow(dead_code)]
     pub fn get(&mut self) -> Result<String, ClipboardError> {
         self.clipboard
             .get_text()
@@ -55,13 +56,13 @@ mod tests {
                 return;
             }
         };
-        
+
         let test_text = "Hello, klip!";
-        
+
         // Copy text
         let copy_result = manager.copy(test_text);
         assert!(copy_result.is_ok());
-        
+
         // Read back
         let read_result = manager.get();
         assert!(read_result.is_ok());
@@ -77,12 +78,12 @@ mod tests {
                 return;
             }
         };
-        
+
         let test_text = "Hello 世界 🌍";
-        
+
         let result = manager.copy(test_text);
         assert!(result.is_ok());
-        
+
         let read_result = manager.get();
         assert!(read_result.is_ok());
         assert_eq!(read_result.unwrap(), test_text);
@@ -97,7 +98,7 @@ mod tests {
                 return;
             }
         };
-        
+
         let result = manager.copy("");
         assert!(result.is_ok());
     }

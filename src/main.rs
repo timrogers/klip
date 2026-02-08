@@ -42,16 +42,17 @@ impl KlipServer {
         Parameters(params): Parameters<CopyToClipboardInput>,
     ) -> Result<CallToolResult, McpError> {
         let char_count = params.text.chars().count();
-        
+
         // Create clipboard manager and copy text
         let mut manager = ClipboardManager::new()
             .map_err(|e| McpError::new(ErrorCode(-32000), e.to_string(), None))?;
-        
-        manager.copy(&params.text)
+
+        manager
+            .copy(&params.text)
             .map_err(|e| McpError::new(ErrorCode(-32000), e.to_string(), None))?;
 
         let message = format!("Successfully copied {} characters to clipboard", char_count);
-        
+
         Ok(CallToolResult::success(vec![Content::text(message)]))
     }
 }
