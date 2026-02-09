@@ -34,11 +34,14 @@ impl ClipboardManager {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use serial_test::serial;
 
     // Note: These tests require a clipboard (X11/Wayland on Linux, native on Windows/macOS)
     // They will be skipped in headless CI environments
+    // Tests are marked with #[serial] to run sequentially as they share system clipboard
 
     #[test]
+    #[serial]
     fn test_clipboard_initialization() {
         let result = ClipboardManager::new();
         // If clipboard is unavailable (headless CI), that's acceptable
@@ -48,6 +51,7 @@ mod tests {
     }
 
     #[test]
+    #[serial]
     fn test_copy_and_read_text() {
         let mut manager = match ClipboardManager::new() {
             Ok(m) => m,
@@ -70,6 +74,7 @@ mod tests {
     }
 
     #[test]
+    #[serial]
     fn test_copy_unicode() {
         let mut manager = match ClipboardManager::new() {
             Ok(m) => m,
@@ -90,6 +95,7 @@ mod tests {
     }
 
     #[test]
+    #[serial]
     fn test_copy_empty_string() {
         let mut manager = match ClipboardManager::new() {
             Ok(m) => m,

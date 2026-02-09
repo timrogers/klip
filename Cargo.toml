@@ -36,6 +36,7 @@ tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 
 [dev-dependencies]
 tokio-test = "0.4"
+serial_test = "3.2"
 
 [[bin]]
 name = "klip"
