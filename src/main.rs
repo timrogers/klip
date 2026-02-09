@@ -1,8 +1,8 @@
 mod clipboard;
 mod error;
 
-use clipboard::ClipboardManager;
 use clap::Parser;
+use clipboard::ClipboardManager;
 use rmcp::handler::server::tool::ToolRouter;
 use rmcp::handler::server::wrapper::Parameters;
 use rmcp::model::*;
