@@ -1,66 +1,48 @@
 # klip
 
-Cross-platform MCP server allowing agents to copy values to the system's clipboard
-
-## Status
-
-✅ **v0.1.0 - Ready for use!**
-
-## Overview
-
-**klip** is a Model Context Protocol (MCP) server written in Rust that enables AI agents like Claude to interact with your system clipboard. It provides a secure, cross-platform way for agents to copy text to your clipboard through the MCP protocol.
+🤖📎 Cross-platform MCP server allowing agents to copy values to the system clipboard
 
 ### Features
 
 - ✅ Cross-platform support (Windows, macOS, Linux)
 - ✅ Simple `copy_to_clipboard` tool
 - ✅ Fast, lightweight Rust implementation
-- ✅ Secure clipboard operations with proper error handling
 - ✅ Full Unicode and emoji support
 
 ## Installation
 
-### Pre-built Binaries
-
-Download the latest release for your platform from the [GitHub Releases page](https://github.com/timrogers/klip/releases).
-
-### From Source
-
-```bash
-cargo install klip
-```
-
-Or build from source:
-
-```bash
-git clone https://github.com/timrogers/klip.git
-cd klip
-cargo build --release
-```
-
-The binary will be available at `target/release/klip` (or `target/release/klip.exe` on Windows).
+* **macOS or Linux via [Homebrew](https://brew.sh/)**: `brew tap timrogers/tap && brew install klip`
+**macOS, Linux or Windows via [Cargo](https://doc.rust-lang.org/cargo/), Rust's package manager**: `cargo install klip`
+**macOS, Linux or Windows via direct binary download**: Download the [latest release](https://github.com/timrogers/litra-rs/releases/latest) for your platform, then copy the binary to `$PATH`
 
 ## Usage
 
-### With Claude Desktop
+### Visual Studio Code
 
-Add the server to your Claude Desktop configuration file:
+Use the buttons below to install the server.
 
-**macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`  
-**Windows**: `%APPDATA%\Claude\claude_desktop_config.json`  
-**Linux**: `~/.config/Claude/claude_desktop_config.json`
+[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_Server-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=klip&config=%7B%22type%22%3A%20%22stdio%22%2C%20%22command%22%3A%20%22klip%22%7D) [![Install in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-Install_Server-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=klip&config=%7B%22type%22%3A%20%22stdio%22%2C%20%22command%22%3A%20%22klip%22%7D&quality=insiders)
 
-```json
-{
-  "mcpServers": {
-    "klip": {
-      "command": "/path/to/klip"
-    }
-  }
-}
+### Copilot CLI
+
+1. Start the Copilot CLI by running `copilot`.
+2. Run the `/mcp add` command to start adding an MCP server
+3. Enter `klip` in the "Name" field.
+4. Enter `klip` in the "Command" field.
+5. Enter `"*"*` in the "Tools" field.
+6. Save by pressing <kbd>Ctrl</kbd>+<kbd>S</kbd>.
+7. Check that the tool is working by using the prompt `Copy the current ISO8601 date to the clipboard`.
+
+### Claude Code 
+
+1. Install the MCP server with the `claude mcp add-json` command
+
+```bash
+claude mcp add-json klip '{"type": "stdio", "command": "klip"}'
 ```
 
-Replace `/path/to/klip` with the actual path to the klip binary.
+2. Start Claude Code by running `claude`.
+3. Check that the tool is working by using the prompt `Copy the current ISO8601 date to the clipboard`.
 
 ### With Other MCP Clients
 
@@ -129,7 +111,3 @@ klip --version
 ## License
 
 MIT License - see [LICENSE](LICENSE) for details.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
