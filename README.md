@@ -12,8 +12,8 @@
 ## Installation
 
 * **macOS or Linux via [Homebrew](https://brew.sh/)**: `brew tap timrogers/tap && brew install klip`
-**macOS, Linux or Windows via [Cargo](https://doc.rust-lang.org/cargo/), Rust's package manager**: `cargo install klip`
-**macOS, Linux or Windows via direct binary download**: Download the [latest release](https://github.com/timrogers/litra-rs/releases/latest) for your platform, then copy the binary to `$PATH`
+* **macOS, Linux or Windows via [Cargo](https://doc.rust-lang.org/cargo/), Rust's package manager**: `cargo install klip`
+* **macOS, Linux or Windows via direct binary download**: Download the [latest release](https://github.com/timrogers/litra-rs/releases/latest) for your platform, then copy the binary to `$PATH`
 
 ## Usage
 
