@@ -90,7 +90,7 @@ jobs:
         env:
           APPLE_SIGNING_KEY_P12: ${{ secrets.APPLE_SIGNING_KEY_P12 }}
       - name: Upload binary as artifact
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           path: klip_${{ steps.sanitise_ref.outputs.value }}_${{ matrix.job.binary_name }}
           name: klip_${{ steps.sanitise_ref.outputs.value }}_${{ matrix.job.binary_name }}
@@ -150,7 +150,7 @@ jobs:
         env:
           APPLE_SIGNING_KEY_P12: ${{ secrets.APPLE_SIGNING_KEY_P12 }}
       - name: Upload binary as artifact
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           path: klip_${{ steps.sanitise_ref.outputs.value }}_darwin-universal
           name: klip_${{ steps.sanitise_ref.outputs.value }}_darwin-universal
