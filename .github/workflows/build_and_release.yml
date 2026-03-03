@@ -48,8 +48,8 @@ jobs:
         run: echo "$HOME/.cargo/bin" >> $GITHUB_PATH
         if: matrix.job.runs_on == 'self-hosted'
       - uses: actions/checkout@v6
-      - name: Use Rust 1.92.0 with target ${{ matrix.job.target }}
-        run: rustup override set 1.92.0-${{ matrix.job.target }}
+      - name: Use Rust 1.93.1 with target ${{ matrix.job.target }}
+        run: rustup override set 1.93.1-${{ matrix.job.target }}
       - uses: Swatinem/rust-cache@v2
       - name: Build in release mode
         run: cargo build --release --target=${{ matrix.job.target }}
@@ -176,8 +176,8 @@ jobs:
     needs: build
     steps:
       - uses: actions/checkout@v6
-      - name: Use Rust 1.92.0
-        run: rustup override set 1.92.0
+      - name: Use Rust 1.93.1
+        run: rustup override set 1.93.1
       - uses: Swatinem/rust-cache@v2
       - name: Install cargo-edit
         run: cargo install cargo-edit
@@ -239,8 +239,8 @@ jobs:
     if: startsWith(github.event.ref, 'refs/tags/v')
     steps:
       - uses: actions/checkout@v6
-      - name: Use Rust 1.92.0
-        run: rustup override set 1.92.0
+      - name: Use Rust 1.93.1
+        run: rustup override set 1.93.1
       - uses: Swatinem/rust-cache@v2
       - name: Publish to Crates.io
         run: cargo publish --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
