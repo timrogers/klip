@@ -12,7 +12,7 @@ keywords = ["mcp", "clipboard", "model-context-protocol"]
 
 [dependencies]
 # MCP server
-rmcp = { version = "0.14.0", features = ["server", "transport-io", "macros"] }
+rmcp = { version = "1.2.0", features = ["server", "transport-io", "macros"] }
 tokio = { version = "1.49", features = ["rt", "rt-multi-thread", "macros"] }
 
 # CLI
